@@ -4,12 +4,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.view.Menu;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
@@ -37,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     public ArrayList<Noticia> listaNoticia;
+    public JsonTask meuJson;
+    private static String minhaUrlTeste = "https://www.json-generator.com/api/json/get/cvlKbvCoaG?indent=2";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +49,13 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+        listaNoticia = new ArrayList<>();
+        meuJson = new JsonTask();
+        meuJson.execute(minhaUrlTeste);
+
+
+
+
     }
 
     public void enviarEmail(){
@@ -89,9 +92,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 URL url = new URL(params[0]);
                 connection = (HttpURLConnection) url.openConnection();
-                //connection.setRequestProperty(nomeUsuario,autorizacao);
                 connection.connect();
-                Log.i("meuLog", "conectou com sucesso");
 
                 InputStream stream = connection.getInputStream();
                 reader = new BufferedReader(new InputStreamReader(stream));
@@ -101,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
 
                 while ((line = reader.readLine()) != null) {
                     buffer.append(line + "\n");
-                    Log.d("Response: ", "> " + line);
                 }
                 return buffer.toString();
 

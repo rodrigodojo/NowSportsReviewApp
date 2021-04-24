@@ -45,6 +45,6 @@ public class MeuAdaptador extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return listaNoticia.size();
+        return 0;
     }
 }
