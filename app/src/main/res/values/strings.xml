@@ -13,7 +13,7 @@
     <string name="menu_sobre">Sobre</string>
     <string name="menu_slideshow">Slideshow</string>
     <string name="titulo_nome_app">Now Sports Review</string>
-    <string name="email_team_support">rodrigodoj@gmail.com</string>
+    <string name="email_team_support">email_support@gmail.com</string>
     <string name="home">Home</string>
     <string name="news">News</string>
     <string name="todo">TODO</string>
@@ -27,4 +27,6 @@
     <string name="siglacasa">siglaCasa</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="texto_sobre">Aplicativo feito para os fãs de futebol para trazer as principais noticias do seu time no campeonato brasileiro.</string>
+    <string name="contato_email">Email</string>
 </resources>

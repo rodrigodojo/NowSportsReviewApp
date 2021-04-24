@@ -1,5 +1,7 @@
 package com.dojo.nowsportsreviewapp;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -53,8 +55,17 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
     }
 
-    public void closeApplication(){
-        finish();
+    public void enviarEmail(){
+
+        String email = "email_support@gmail.com";
+        Intent intent = new Intent( Intent.ACTION_SEND, Uri.parse(email));
+        intent.putExtra(Intent.EXTRA_EMAIL , new String[]{email});
+        intent.putExtra(Intent.EXTRA_SUBJECT , "Contato pelo aplicativo NowSportReview");
+        intent.putExtra(Intent.EXTRA_TEXT, "Mensagem Automática");
+
+        intent.setType("message/rfc822");
+
+        startActivity( Intent.createChooser(intent,"Compartilhar") );
     }
 
     @Override
